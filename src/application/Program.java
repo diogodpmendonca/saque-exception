@@ -4,6 +4,7 @@ import java.util.Locale;
 import java.util.Scanner;
 
 import model.entities.Account;
+import model.exception.DomainException;
 
 public class Program {
 
@@ -34,7 +35,7 @@ public class Program {
 		
 		System.out.println(account.toString());
 		}
-		catch (IllegalArgumentException e) {
+		catch (DomainException e) {
 			System.out.println("Erro: "+e.getMessage());
 		}
 		catch (RuntimeException e) {
