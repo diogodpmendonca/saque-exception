@@ -18,9 +18,6 @@ public class Account {
 		return number;
 	}
 
-	public void setNumber(Integer number) {
-		this.number = number;
-	}
 
 	public String getHolder() {
 		return holder;
@@ -34,10 +31,6 @@ public class Account {
 		return withdrawLimit;
 	}
 
-	public void setWithdrawLimit(Double withdrawLimit) {
-		this.withdrawLimit = withdrawLimit;
-	}
-
 	public Double getBalance() {
 		return balance;
 	}
@@ -47,7 +40,14 @@ public class Account {
 	}
 	
 	public void withdraw(Double amount) {
-		balance -= amount;
+		if(amount > withdrawLimit) {
+			throw new IllegalArgumentException("Valor superior ao limeite de saque");
+		}else if(amount > balance){
+			throw new IllegalArgumentException("Valor superior ao saldo da conta");
+		}else {
+			balance -= amount;
+		}
+
 	}
 
 	@Override
